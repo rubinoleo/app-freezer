@@ -1,0 +1,14 @@
+{
+  "name": "App Freezer Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart"
+      ]
+    }
+  }
+}
