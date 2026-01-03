@@ -4,7 +4,7 @@
     "dockerfile": "Dockerfile"
   },
   "containerEnv": {
-    "CHROME_EXECUTABLE": "/usr/bin/google-chrome --no-sandbox"
+    "CHROME_EXECUTABLE": "/usr/local/bin/chrome-no-sandbox"
   },
   "customizations": {
     "vscode": {
