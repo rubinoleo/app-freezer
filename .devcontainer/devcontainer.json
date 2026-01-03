@@ -3,6 +3,9 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "containerEnv": {
+    "CHROME_EXECUTABLE": "/usr/bin/google-chrome --no-sandbox"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
