@@ -21,13 +21,18 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Installazione Google Chrome (per Flutter Web)
+# Installazione Google Chrome
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-keyring.gpg \
     && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
     > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
+
+# Wrapper Chrome --no-sandbox (QUESTO È IL PUNTO CHIAVE)
+RUN echo '#!/bin/bash\nexec google-chrome --no-sandbox "$@"' \
+    > /usr/local/bin/chrome-no-sandbox \
+    && chmod +x /usr/local/bin/chrome-no-sandbox
 
 # Installazione Flutter
 RUN git clone https://github.com/flutter/flutter.git /opt/flutter
